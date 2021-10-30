@@ -1,6 +1,21 @@
 import React from "react";
+import { jsPDF } from "jspdf";
 
 const Navbar = () => {
+  const generatePDF = () => {
+    var doc = new jsPDF();
+    // doc.html(
+    //   document.querySelector(".navbar", {
+    //     callback: function (pdf) {
+    //       pdf.save("prescription.pdf");
+    //     },
+    //   })
+    // );
+    var a = "Hello World";
+    doc.text(a, 10, 10);
+    doc.save("a4.pdf");
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,9 +45,12 @@ const Navbar = () => {
               <a className="nav-link" href="/">
                 Pricing
               </a>
-              <a className="nav-link disabled" href="/">
-                Disabled
-              </a>
+              <button
+                className="nav-link btn btn-primary text-white"
+                onClick={generatePDF}
+              >
+                Download Prescription
+              </button>
             </div>
           </div>
         </div>
